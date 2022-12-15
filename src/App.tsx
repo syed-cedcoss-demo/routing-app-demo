@@ -4,10 +4,11 @@ import ErrorBoundary from './components/errors/ErrorBoundary';
 import AuthRoutes from './components/navigation/AuthRoutes';
 import PrivateRoutes from './components/navigation/PrivateRoutes';
 import ProtectedRoutes from './components/navigation/ProtectedRoutes';
-import Onboarding from './components/onboarding/Onboarding';
+import { Completed, StepOne, StepThree, StepTwo, Welcome } from './components/onboarding';
+import './components/onboarding/onboarding.css';
+
 import Dashboard from './components/panel/Dashboard';
 import Settings from './components/panel/Settings';
-
 const App = () => {
   console.log('ENV', process.env.REACT_APP_ENV);
   return (
@@ -17,12 +18,12 @@ const App = () => {
         <Route path="/auth/*" element={<AuthRoutes />} />
         {/* on-boarding routes */}
         <Route path="/onboarding/:UUID" element={<ProtectedRoutes />}>
-          <Route path="/onboarding/:UUID/welcome" element={<Onboarding />} />
-          <Route path="/onboarding/:UUID/step1" element={<Onboarding />} />
-          <Route path="/onboarding/:UUID/step2" element={<Onboarding />} />
-          <Route path="/onboarding/:UUID/step2" element={<Onboarding />} />
-          <Route path="/onboarding/:UUID/completed" element={<Onboarding />} />
-          <Route path="/onboarding/:UUID/oops" element={<Onboarding />} />
+          <Route path="/onboarding/:UUID/welcome" element={<Welcome />} />
+          <Route path="/onboarding/:UUID/step1" element={<StepOne />} />
+          <Route path="/onboarding/:UUID/step2" element={<StepTwo />} />
+          <Route path="/onboarding/:UUID/step3" element={<StepThree />} />
+          <Route path="/onboarding/:UUID/completed" element={<Completed />} />
+          <Route path="/onboarding/:UUID/oops" element={<StepOne />} />
         </Route>
         {/* panel routes */}
         <Route path="/panel/:UUID" element={<PrivateRoutes />}>
